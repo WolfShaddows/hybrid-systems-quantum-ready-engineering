@@ -1,0 +1,8 @@
+metric,value,unit
+requests,100,count
+duration,8.204373,seconds
+throughput,12.189,requests/second
+latency_min,73.78,milliseconds
+latency_p50,78.588,milliseconds
+latency_p95,99.157,milliseconds
+latency_max,119.299,milliseconds

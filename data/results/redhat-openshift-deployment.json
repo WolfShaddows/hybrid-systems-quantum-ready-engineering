@@ -1,0 +1,93 @@
+{
+  "experiment_id": "redhat-openshift-deployment",
+  "status": "passed",
+  "timestamp_utc": "2026-11-17T14:45:20.4368796Z",
+  "project": "wolfshadows-dev-dev",
+  "cluster_version": "4.22.22",
+  "image_digest": "sha256:8fe0f2e132cd9168c6fd3e08d6145f294cca5a266a0329228dd1c35075619648",
+  "route": "https://hybrid-engineering-lab-wolfshadows-dev-dev.apps.rm2.thpm.p1.openshiftapps.com",
+  "health": {
+    "status": "ok",
+    "ledger": "append-only-hash-chain",
+    "single_writer_lock": true,
+    "decision_adapter": "process"
+  },
+  "transactions": [
+    {
+      "status": "POSTED",
+      "account_id": "openshift-demo",
+      "idempotency_key": "openshift-81646d3bf7614f2eabc9248318ffb81e",
+      "operation": "CREDIT",
+      "amount_cents": 700,
+      "balance_cents": 700,
+      "replayed": false
+    },
+    {
+      "status": "POSTED",
+      "account_id": "openshift-demo",
+      "idempotency_key": "openshift-5edac6dee7144ef4957dc2300801c3e6",
+      "operation": "DEBIT",
+      "amount_cents": 250,
+      "balance_cents": 450,
+      "replayed": false
+    }
+  ],
+  "checks": [
+    "oc authentication and active project verified",
+    "existing BuildConfig reused",
+    "cluster binary build completed",
+    "Deployment, Service, Route, and PVC applied",
+    "Route /health returned status=ok",
+    "Synthetic credit and debit returned expected balances"
+  ],
+  "error": null,
+  "build_log_tail": [
+    "[3/3] COMMIT temp.builder.openshift.io/wolfshadows-dev-dev/hybrid-engineering-lab-2:c5860bf3",
+    "--> 87a92154adb5",
+    "Successfully tagged temp.builder.openshift.io/wolfshadows-dev-dev/hybrid-engineering-lab-2:c5860bf3",
+    "87a92154adb51e524ce5bf7ef7a5443cc8f163ddcb9b1826d2723881c41477d1",
+    "Pushing image image-registry.openshift-image-registry.svc:5000/wolfshadows-dev-dev/hybrid-engineering-lab:latest ...",
+    "Getting image source signatures",
+    "Copying blob sha256:bd0bb49686d38ffc090c15f30d472cdb0354fb8cf46c03f21f4f2764d4e4efcd",
+    "Copying blob sha256:c5b9275bc0db751e2d75dfe63b7fe841f35111d72e930782de032d5d13d45ab1",
+    "Copying blob sha256:edd1ed89f0d443580bd42e5a10cd8736aba5a3438b2a0645c2ebb50119bb0eba",
+    "Copying blob sha256:f1408710f65cf2f33054c8d5b33ab1f5684c9ffcfc81bc01e550faec04fa9d0b",
+    "Copying blob sha256:49cf9009e0af3adc96baebc58dcde451a6858961e0c027ba7f7ba3075e7240ba",
+    "Copying blob sha256:07bad0cccfa15aac629986ee3771c057c7690f9ce635dda839f652e54c911318",
+    "Copying blob sha256:1bf7f7b7d02f74fa2a38d4325c84dcaf0e91faae8e30f221d86c841b0c4f6647",
+    "Copying blob sha256:a466b9e11010eac13b4d1ac50894b683c5fbc95be50dc4dedcdec9c979f98f96",
+    "Copying blob sha256:405aa165b3ac61a5d93c2398a95cdd881401cceda86849dde23f6293310b70c0",
+    "Copying blob sha256:b115a8437df4647b60821c4efa2af10b1fb83f9c4722416152159ece1e91e42e",
+    "Copying blob sha256:3fc3967ab3632625fdde4507a4c4cdb3a5781621c0161170c8f9fcc213529c4b",
+    "Copying blob sha256:4c37665afa9336a2677a3c4fca944e371cb677ad707385cb1045c8212a36e5e8",
+    "Copying blob sha256:6fda51fea78b053fa0364956f2050d6808037c237935c1dff026abf7d6261141",
+    "Copying blob sha256:052e20808b2fd84be3872aeb287a4e02d1cb73e538a55208dd87a7b34a8cccc2",
+    "Copying blob sha256:52eb54f04b84ee8ce89e62626d15cfeae4c88830c1da3b200395ae34a2d52e5b",
+    "Copying config sha256:87a92154adb51e524ce5bf7ef7a5443cc8f163ddcb9b1826d2723881c41477d1",
+    "Writing manifest to image destination",
+    "Successfully pushed image-registry.openshift-image-registry.svc:5000/wolfshadows-dev-dev/hybrid-engineering-lab@sha256:8fe0f2e132cd9168c6fd3e08d6145f294cca5a266a0329228dd1c35075619648",
+    "Push successful"
+  ],
+  "build": {
+    "phase": "Complete",
+    "reason": null,
+    "name": "hybrid-engineering-lab-2"
+  },
+  "pod": [
+    {
+      "phase": "Running",
+      "name": "hybrid-engineering-lab-7c4db6fb8d-5j7xl",
+      "ready": true
+    }
+  ],
+  "pvc": {
+    "phase": "Bound",
+    "capacity": "1Gi",
+    "name": "hybrid-engineering-ledger"
+  },
+  "service": {
+    "cluster_ip": "172.30.63.129",
+    "name": "hybrid-engineering-lab",
+    "port": 8080
+  }
+}

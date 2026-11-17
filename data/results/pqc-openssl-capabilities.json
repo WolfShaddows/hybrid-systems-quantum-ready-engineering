@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "openssl-pqc-capability-probe",
+  "status": "executed_no_pqc_algorithms_detected",
+  "timestamp_utc": "2026-11-17T13:09:26.947583+00:00",
+  "openssl_version_output": "OpenSSL 3.1.0 14 Mar 2023 (Library: OpenSSL 3.1.0 14 Mar 2023)\nbuilt on: Tue May  2 10:24:45 2023 UTC\nplatform: VC-WIN64A\noptions:  bn(64,64)\ncompiler: cl.exe  /Zi /Fdossl_static.pdb /Gs0 /GF /Gy /MD /W3 /wd4090 /nologo /O2 -DL_ENDIAN -DOPENSSL_PIC\nOPENSSLDIR: \"D:\\bld\\openssl_split_1683022585232\\_h_env\\Library\"\nENGINESDIR: \"D:\\bld\\openssl_split_1683022585232\\_h_env\\Library\\lib\\engines-3\"\nMODULESDIR: \"D:\\bld\\openssl_split_1683022585232\\_h_env\\Library\\lib\\ossl-modules\"\nSeeding source: os-specific\nCPUINFO: OPENSSL_ia32cap=0xfed8320b078bffff:0x400684219c97a9",
+  "commands": {
+    "kem_list": {
+      "exit_code": 0,
+      "stderr": ""
+    },
+    "signature_list": {
+      "exit_code": 0,
+      "stderr": ""
+    }
+  },
+  "providers": "not inferred by this capability probe",
+  "algorithms_detected": {
+    "ML-KEM-512": false,
+    "ML-KEM-768": false,
+    "ML-KEM-1024": false,
+    "ML-DSA": false,
+    "SLH-DSA": false
+  },
+  "algorithm_operation_tests": "not run; this probe detects availability only",
+  "fips_validation": "not evaluated",
+  "limitations": [
+    "algorithm listing does not prove protocol interoperability, FIPS validation, side-channel resistance, or production support"
+  ]
+}

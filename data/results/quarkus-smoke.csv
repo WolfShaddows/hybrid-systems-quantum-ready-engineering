@@ -1,0 +1,3 @@
+operation,status,balance_cents,replayed
+CREDIT,POSTED,980,False
+DEBIT,POSTED,0,False

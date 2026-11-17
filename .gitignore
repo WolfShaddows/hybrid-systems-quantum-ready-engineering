@@ -1,0 +1,41 @@
+# Purpose: .gitignore. Expected: define local project/tool behavior consumed by its runtime.
+# Ignorar artefactos locales y datos potencialmente sensibles
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+artifacts-local/
+.DS_Store
+Thumbs.db
+
+# Local Maven distribution and caches
+tools/
+java/target/
+
+
+# Local state and Python cache
+__pycache__/
+*.py[cod]
+data/*.chain*
+data/results/*.partial.json
+manual-ledger.dat
+
+
+
+
+
+# Local editor state and compiled build outputs
+.vscode/
+/build/
+/rust/target/
+/data/*.dat
+/data/*.chain*
+/docs/ADVOCACY-PORTFOLIO.md

@@ -1,0 +1,79 @@
+model,model_digest,case_id,category,repeat,latency_ms,prompt_tokens,generated_tokens,thinking_mode,raw_answer
+granite42-fast:latest,cbb5553700d6d68be6fb2a5c54a49036dbd811e856cb8b01e8e427ad5ea35a6d,arith-001,numeric_exact,1,11003.39,47,59,False,"Start with opening balance: 2000 cents  
+Add 1250 cents: 2000 + 1250 = 3250 cents  
+Add 250 cents: 3250 + 250 = 3500 cents  
+
+Final integer balance in cents: 3500"
+granite42-fast:latest,cbb5553700d6d68be6fb2a5c54a49036dbd811e856cb8b01e8e427ad5ea35a6d,arith-001,numeric_exact,2,10667.33,47,59,False,"Start with opening balance: 2000 cents  
+Add 1250 cents: 2000 + 1250 = 3250 cents  
+Add 250 cents: 3250 + 250 = 3500 cents  
+
+Final integer balance in cents: 3500"
+granite42-fast:latest,cbb5553700d6d68be6fb2a5c54a49036dbd811e856cb8b01e8e427ad5ea35a6d,arith-002,numeric_exact,1,9657.76,39,59,False,"Compute step by step:
+
+1. Subtract: 9800 cents - 2750 cents = 7150 cents  
+2. Add: 7150 cents + 125 cents = 7275 cents
+
+Return only the integer result in cents:
+
+7275"
+granite42-fast:latest,cbb5553700d6d68be6fb2a5c54a49036dbd811e856cb8b01e8e427ad5ea35a6d,review-001,bug_detection,1,22906.52,57,174,False,"Yes, there is a boundary bug.
+
+The condition `if amount_cents >= balance_cents: reject()` incorrectly rejects transactions that would leave the balance exactly zero. For example, if `balance_cents = 100` and `amount_cents = 100`, the transaction should be allowed (leaving zero balance), but the condition triggers `reject()` because `100 >= 100` is true.
+
+**Operator behavior:** The `>=` operator includes the boundary value (`amount_cents == balance_cents`), causing rejection when zero balance is valid. The correct condition should be `if amount_cents > balance_cents: reject()` to allow transactions that exactly exhaust the balance.
+
+**Brief answer:** Yes, boundary bug; `>=` incorrectly rejects zero-balance transactions. Correct operator should be `>` for rejection."
+granite42-fast:latest,cbb5553700d6d68be6fb2a5c54a49036dbd811e856cb8b01e8e427ad5ea35a6d,review-002,security_finding,1,38704.89,52,256,False,"The line:
+
+```python
+query = ""SELECT * FROM users WHERE name = '"" + user_input + ""'""
+```
+
+contains a **SQL injection vulnerability**.
+
+### Vulnerability: SQL Injection
+
+**Why:** The code directly concatenates user-controlled input (`user_input`) into a SQL query string using string interpolation. If `user_input` contains a malicious payload (e.g., `' OR '1'='1`), it can alter the query's logic, potentially allowing unauthorized data access, modification, or bypass of authentication.
+
+**Example:**  
+If `user_input = ""' OR '1'='1""`, the resulting query becomes:
+```sql
+SELECT * FROM users WHERE name = '' OR '1'='1'
+```
+which always evaluates to true, returning all users.
+
+### Direct mitigation:
+**Use parameterized queries (prepared statements) instead of string concatenation.**
+
+For example, with `sqlite3` (Python standard library):
+```python
+query = ""SELECT * FROM users WHERE name = ?""
+cursor.execute(query, (user_input,))  # Safe: input is treated as data, not SQL"
+granite42-fast:latest,cbb5553700d6d68be6fb2a5c54a49036dbd811e856cb8b01e8e427ad5ea35a6d,abstain-001,abstention,1,4613.05,62,29,False,"The source does not establish a specific monthly uptime percentage guarantee. Therefore, the exact monthly uptime percentage guaranteed cannot be determined from the provided source."
+granite42-think:latest,be7f995704aa35d9ca0dcd089e11fe7a216b58c8674fefee344d6ee73448b07c,arith-001,numeric_exact,1,3147.6,56,19,low,3500
+granite42-think:latest,be7f995704aa35d9ca0dcd089e11fe7a216b58c8674fefee344d6ee73448b07c,arith-001,numeric_exact,2,3000.74,56,19,low,3500
+granite42-think:latest,be7f995704aa35d9ca0dcd089e11fe7a216b58c8674fefee344d6ee73448b07c,arith-002,numeric_exact,1,3991.72,48,23,low,10675
+granite42-think:latest,be7f995704aa35d9ca0dcd089e11fe7a216b58c8674fefee344d6ee73448b07c,review-001,bug_detection,1,34903.67,66,205,low,"Yes, there is a **boundary bug**.  
+
+The condition `if amount_cents >= balance_cents: reject()` incorrectly rejects transactions that would leave the balance exactly zero (i.e., `amount_cents == balance_cents`). The transaction should be allowed when `amount_cents == balance_cents` (leaving zero balance), but the `>=` operator rejects this boundary case.  
+
+**Operator behavior**: `>=` is inclusive (rejects when `amount_cents` equals `balance_cents`), causing the off-by-one/boundary error. The fix should use `> balance_cents` to reject only when the amount exceeds the balance."
+granite42-think:latest,be7f995704aa35d9ca0dcd089e11fe7a216b58c8674fefee344d6ee73448b07c,review-002,security_finding,1,29467.72,61,167,low,"Vulnerability: SQL injection (via string concatenation of untrusted input into an SQL query).
+
+Direct mitigation: Use a parameterized query (prepared statement) instead of concatenating `user_input` into the query string. For example, with `sqlite3`:
+
+```python
+query = ""SELECT * FROM users WHERE name = ?""
+cursor.execute(query, (user_input,))
+```
+
+Or with `psycopg2` (PostgreSQL):
+
+```python
+query = ""SELECT * FROM users WHERE name = %s""
+cursor.execute(query, (user_input,))
+```
+
+Parameterized queries ensure the database treats `user_input` as a data value, not executable SQL, thereby preventing injection."
+granite42-think:latest,be7f995704aa35d9ca0dcd089e11fe7a216b58c8674fefee344d6ee73448b07c,abstain-001,abstention,1,11840.85,71,64,low,"The source does not specify or guarantee an exact monthly uptime percentage. It only states that ""The deployment notes list the service owner and region. They do not specify an availability SLA."" Therefore, no exact monthly uptime percentage is guaranteed or provided by the source."

@@ -1,0 +1,82 @@
+# Purpose: redhat/openshift/deployment.yaml. Expected: declare platform resources and runtime policies for the laboratory service.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hybrid-engineering-lab
+  labels: { app.kubernetes.io/name: hybrid-engineering-lab }
+spec:
+  # One replica: this reference file journal is protected by a local lock, not replicated consensus.
+  replicas: 1
+  selector:
+    matchLabels: { app.kubernetes.io/name: hybrid-engineering-lab }
+  template:
+    metadata:
+      labels: { app.kubernetes.io/name: hybrid-engineering-lab }
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile: { type: RuntimeDefault }
+      containers:
+        - name: api
+          image: image-registry.openshift-image-registry.svc:5000/hybrid-lab/hybrid-engineering:latest
+          imagePullPolicy: IfNotPresent
+          ports: [{ name: http, containerPort: 8080, protocol: TCP }]
+          env:
+            - { name: QUARKUS_HTTP_HOST, value: "0.0.0.0" }
+            - { name: QUARKUS_HTTP_PORT, value: "8080" }
+            - { name: LEDGER_PATH, value: "/data/transactions.chain" }
+            - { name: COBOL_ENGINE, value: "/app/build/txn-engine" }
+            - { name: RUST_ADAPTER, value: "/app/rust/txn-adapter" }
+          resources:
+            requests: { cpu: 250m, memory: 512Mi }
+            limits: { cpu: "2", memory: 2Gi }
+          readinessProbe:
+            httpGet: { path: /health, port: http }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /health, port: http }
+            initialDelaySeconds: 20
+            periodSeconds: 20
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: { drop: ["ALL"] }
+          volumeMounts:
+            - { name: ledger, mountPath: /data }
+            - { name: tmp, mountPath: /tmp }
+      volumes:
+        - name: ledger
+          persistentVolumeClaim: { claimName: hybrid-engineering-ledger }
+        - name: tmp
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hybrid-engineering-lab
+spec:
+  selector: { app.kubernetes.io/name: hybrid-engineering-lab }
+  ports: [{ name: http, port: 8080, targetPort: http }]
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: hybrid-engineering-lab
+spec:
+  to: { kind: Service, name: hybrid-engineering-lab }
+  port: { targetPort: http }
+  tls: { termination: edge, insecureEdgeTerminationPolicy: Redirect }
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hybrid-engineering-ledger
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests: { storage: 1Gi }
+
+
+
+

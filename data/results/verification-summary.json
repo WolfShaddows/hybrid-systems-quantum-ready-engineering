@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "laboratory-verification",
+  "status": "passed",
+  "timestamp_utc": "2026-11-17T14:56:55.461219+00:00",
+  "checks": {
+    "build": "passed",
+    "integration_tests": "passed (6 tests; scripts/verify.ps1)",
+    "qiskit": "executed",
+    "openssl_pqc_probe": "executed",
+    "granite": "evidence present; regenerate with -RunGranite or demo terminal 5",
+    "openshift_deployment": "passed (hybrid-engineering-lab-2; cluster 4.22.22)"
+  },
+  "environment": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.14.3",
+    "rustc": "rustc 1.95.0 (59807616e 2026-04-14)",
+    "java": "openjdk version \"25.0.1\" 2025-10-21 LTS",
+    "openssl": "OpenSSL 3.1.0 14 Mar 2023 (Library: OpenSSL 3.1.0 14 Mar 2023)",
+    "cobol_config_dir": "COB_CONFIG_DIR set by caller"
+  },
+  "artifacts": [
+    {
+      "file": "enterprise-benchmark.json",
+      "sha256": "d6df670b01616814e24ba74a900bd77d211a718fbb71f05daff86e901daed31b",
+      "bytes": 537,
+      "experiment_id": "benchmark-enterprise-api",
+      "status": "executed"
+    },
+    {
+      "file": "quarkus-smoke.json",
+      "sha256": "b3df5d9fbc2997c80bbc448d30d0e0202a15eb97ca308281b46d2a0c5a3023df",
+      "bytes": 849,
+      "experiment_id": "quarkus-rest-smoke",
+      "status": "passed"
+    },
+    {
+      "file": "qiskit-circuits.json",
+      "sha256": "39368bbbfa45d9dbf73a0187371e7aa694b518a563f92e9e5714fad1dc69500e",
+      "bytes": 3647,
+      "experiment_id": "qiskit-circuit-basics",
+      "status": "executed"
+    },
+    {
+      "file": "pqc-openssl-capabilities.json",
+      "sha256": "b84ccbc4c8cc7e0c55f21c6ab6f5957f7ca0e8848dab19f3affa36275eb26883",
+      "bytes": 1476,
+      "experiment_id": "openssl-pqc-capability-probe",
+      "status": "executed_no_pqc_algorithms_detected"
+    },
+    {
+      "file": "granite-evaluation.json",
+      "sha256": "168ba94a7626d20e4ecf1e34cfa8eb1d8456026f8531d1101fec793777c3fb5d",
+      "bytes": 17376,
+      "experiment_id": "granite-local-engineering-eval",
+      "status": "executed"
+    },
+    {
+      "file": "redhat-openshift-deployment.json",
+      "sha256": "1414d32a9124d82cbeae53a627be7b0fc86b905c0615104b425bb45751ef94f4",
+      "bytes": 4140,
+      "experiment_id": "redhat-openshift-deployment",
+      "status": "passed"
+    }
+  ],
+  "limitations": [
+    "No dependency vulnerability scanner was run; hashes establish artifact identity, not security approval.",
+    "PQC listing is capability discovery only."
+  ]
+}

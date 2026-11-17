@@ -1,0 +1,170 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "qiskit-circuit-basics",
+  "status": "executed",
+  "environment": {
+    "python": "3.14.3",
+    "qiskit": "2.4.1",
+    "qiskit_aer": "0.17.2",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "seed": 20261117,
+  "results": [
+    {
+      "name": "bell_2q_ideal",
+      "qubits": 2,
+      "depth": 3,
+      "operations": {
+        "measure": 2,
+        "h": 1,
+        "cx": 1
+      },
+      "shots": 4096,
+      "counts": {
+        "00": 2009,
+        "11": 2087
+      },
+      "elapsed_ms": 115.02,
+      "backend": "aer_simulator",
+      "pass": true
+    },
+    {
+      "name": "ghz_3q_ideal",
+      "qubits": 3,
+      "depth": 4,
+      "operations": {
+        "measure": 3,
+        "cx": 2,
+        "h": 1
+      },
+      "shots": 4096,
+      "counts": {
+        "000": 1993,
+        "111": 2103
+      },
+      "elapsed_ms": 122.808,
+      "backend": "aer_simulator",
+      "pass": true
+    },
+    {
+      "name": "grover_mark_11_2q_ideal",
+      "qubits": 2,
+      "depth": 8,
+      "operations": {
+        "h": 6,
+        "x": 4,
+        "cz": 2,
+        "measure": 2
+      },
+      "shots": 4096,
+      "counts": {
+        "11": 4096
+      },
+      "elapsed_ms": 120.728,
+      "backend": "aer_simulator",
+      "pass": true
+    },
+    {
+      "name": "bell_2q_depolarizing_noise",
+      "qubits": 2,
+      "depth": 3,
+      "operations": {
+        "measure": 2,
+        "h": 1,
+        "cx": 1
+      },
+      "shots": 4096,
+      "counts": {
+        "00": 2044,
+        "11": 1994,
+        "10": 25,
+        "01": 33
+      },
+      "elapsed_ms": 55.342,
+      "backend": "aer_simulator",
+      "noise_model": {
+        "single_qubit_depolarizing_probability": 0.02,
+        "two_qubit_depolarizing_probability": 0.03
+      },
+      "expected_relation": "correlated 00/11 outcomes remain dominant; noise may introduce 01/10",
+      "pass": true
+    },
+    {
+      "name": "ghz_2q_scaling",
+      "qubits": 2,
+      "depth": 3,
+      "operations": {
+        "measure": 2,
+        "h": 1,
+        "cx": 1
+      },
+      "shots": 4096,
+      "counts": {
+        "11": 2105,
+        "00": 1991
+      },
+      "elapsed_ms": 124.271,
+      "backend": "aer_simulator",
+      "pass": true
+    },
+    {
+      "name": "ghz_4q_scaling",
+      "qubits": 4,
+      "depth": 5,
+      "operations": {
+        "measure": 4,
+        "cx": 3,
+        "h": 1
+      },
+      "shots": 4096,
+      "counts": {
+        "0000": 2022,
+        "1111": 2074
+      },
+      "elapsed_ms": 124.289,
+      "backend": "aer_simulator",
+      "pass": true
+    },
+    {
+      "name": "ghz_8q_scaling",
+      "qubits": 8,
+      "depth": 9,
+      "operations": {
+        "measure": 8,
+        "cx": 7,
+        "h": 1
+      },
+      "shots": 4096,
+      "counts": {
+        "11111111": 2033,
+        "00000000": 2063
+      },
+      "elapsed_ms": 128.983,
+      "backend": "aer_simulator",
+      "pass": true
+    },
+    {
+      "name": "ghz_12q_scaling",
+      "qubits": 12,
+      "depth": 13,
+      "operations": {
+        "measure": 12,
+        "cx": 11,
+        "h": 1
+      },
+      "shots": 4096,
+      "counts": {
+        "000000000000": 2046,
+        "111111111111": 2050
+      },
+      "elapsed_ms": 132.901,
+      "backend": "aer_simulator",
+      "pass": true
+    }
+  ],
+  "limitations": [
+    "classical Aer simulation only; no QPU execution",
+    "ideal statevector results do not model hardware calibration",
+    "runtime depends on this host"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "benchmark-enterprise-api",
+  "status": "executed",
+  "environment": {
+    "os": "Windows-11-10.0.26300-SP0",
+    "python": "3.14.3"
+  },
+  "requests": 100,
+  "duration_s": 8.204373,
+  "throughput_rps": 12.189,
+  "latency_ms": {
+    "min": 73.78,
+    "p50": 78.588,
+    "p95": 99.157,
+    "max": 119.299
+  },
+  "cpu_percent": null,
+  "memory_bytes": null,
+  "limitations": [
+    "single local process; no network or TLS; OS CPU/RAM not sampled by this script"
+  ]
+}

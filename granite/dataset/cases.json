@@ -1,0 +1,8 @@
+[
+  {"id":"arith-001","category":"numeric_exact","prompt":"A deterministic transaction adds 1250 cents and then 250 cents to an opening balance of 2000 cents. Return only the final integer balance in cents.","expected":"3500","repeat":2},
+  {"id":"arith-002","category":"numeric_exact","prompt":"Compute (9800 cents - 2750 cents) + 125 cents. Return only the integer result in cents.","expected":"7175","repeat":1},
+  {"id":"review-001","category":"bug_detection","prompt":"Review this debit guard. Is there a boundary bug? `if amount_cents >= balance_cents: reject()` The transaction should be allowed to leave a zero balance. Answer briefly and identify the operator behavior.","expected_keywords":[">=","zero"],"repeat":1},
+  {"id":"review-002","category":"security_finding","prompt":"Review this Python line for a concrete security risk: `query = \"SELECT * FROM users WHERE name = '\" + user_input + \"'\"` Name the vulnerability and one direct mitigation.","expected_keywords":["injection","parameter"],"repeat":1},
+  {"id":"abstain-001","category":"abstention","prompt":"Use only this source: `The deployment notes list the service owner and region. They do not specify an availability SLA.` What exact monthly uptime percentage is guaranteed? If the source does not establish it, say so instead of guessing.","expected_abstention":true,"repeat":1}
+]
+

@@ -1,0 +1,16 @@
+# Purpose: rust/Cargo.toml. Expected: declare Rust package metadata and build configuration.
+[package]
+name = "hybrid-rust-adapter"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "hybrid_rust_adapter"
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "txn-adapter"
+path = "src/main.rs"
+
+
+

@@ -1,0 +1,9 @@
+name,qubits,depth,shots,elapsed_ms,backend,pass,operations_json,counts_json,noise_model_json
+bell_2q_ideal,2,3,4096,115.02,aer_simulator,True,"{""cx"": 1, ""h"": 1, ""measure"": 2}","{""00"": 2009, ""11"": 2087}",{}
+ghz_3q_ideal,3,4,4096,122.808,aer_simulator,True,"{""cx"": 2, ""h"": 1, ""measure"": 3}","{""000"": 1993, ""111"": 2103}",{}
+grover_mark_11_2q_ideal,2,8,4096,120.728,aer_simulator,True,"{""cz"": 2, ""h"": 6, ""measure"": 2, ""x"": 4}","{""11"": 4096}",{}
+bell_2q_depolarizing_noise,2,3,4096,55.342,aer_simulator,True,"{""cx"": 1, ""h"": 1, ""measure"": 2}","{""00"": 2044, ""01"": 33, ""10"": 25, ""11"": 1994}","{""single_qubit_depolarizing_probability"": 0.02, ""two_qubit_depolarizing_probability"": 0.03}"
+ghz_2q_scaling,2,3,4096,124.271,aer_simulator,True,"{""cx"": 1, ""h"": 1, ""measure"": 2}","{""00"": 1991, ""11"": 2105}",{}
+ghz_4q_scaling,4,5,4096,124.289,aer_simulator,True,"{""cx"": 3, ""h"": 1, ""measure"": 4}","{""0000"": 2022, ""1111"": 2074}",{}
+ghz_8q_scaling,8,9,4096,128.983,aer_simulator,True,"{""cx"": 7, ""h"": 1, ""measure"": 8}","{""00000000"": 2063, ""11111111"": 2033}",{}
+ghz_12q_scaling,12,13,4096,132.901,aer_simulator,True,"{""cx"": 11, ""h"": 1, ""measure"": 12}","{""000000000000"": 2046, ""111111111111"": 2050}",{}

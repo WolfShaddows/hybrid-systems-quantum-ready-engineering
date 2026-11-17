@@ -1,0 +1,405 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "granite-local-engineering-eval",
+  "status": "executed",
+  "timestamp_utc": "2026-11-17T12:52:14.834427+00:00",
+  "endpoint": "local Ollama API at 127.0.0.1:11434",
+  "ollama_version": "ollama version is 0.40.16",
+  "dataset_sha256": "406e74ce80f19c082adb3695e78b3b2f417b8268f98f0a9defcc7fa0ebadbb30",
+  "dataset_cases": 5,
+  "seed": 42,
+  "generation": {
+    "temperature": 0,
+    "seed": 42,
+    "fast": {
+      "think": false,
+      "num_predict": 256
+    },
+    "think": {
+      "think": "low",
+      "num_predict": 1024
+    }
+  },
+  "models": [
+    {
+      "model": "granite42-fast:latest",
+      "model_digest": "cbb5553700d6d68be6fb2a5c54a49036dbd811e856cb8b01e8e427ad5ea35a6d",
+      "by_category": {
+        "abstention": {
+          "passed": 1,
+          "total": 1,
+          "rate": 1.0
+        },
+        "bug_detection": {
+          "passed": 1,
+          "total": 1,
+          "rate": 1.0
+        },
+        "numeric_exact": {
+          "passed": 2,
+          "total": 3,
+          "rate": 0.667
+        },
+        "security_finding": {
+          "passed": 1,
+          "total": 1,
+          "rate": 1.0
+        }
+      },
+      "mean_latency_ms": 16258.82,
+      "numeric_repeat_consistency": 1.0,
+      "numeric_repeat_cases": 1,
+      "interpretation": "descriptive scores on this small fixed dataset; not a general model ranking"
+    },
+    {
+      "model": "granite42-think:latest",
+      "model_digest": "be7f995704aa35d9ca0dcd089e11fe7a216b58c8674fefee344d6ee73448b07c",
+      "by_category": {
+        "abstention": {
+          "passed": 1,
+          "total": 1,
+          "rate": 1.0
+        },
+        "bug_detection": {
+          "passed": 1,
+          "total": 1,
+          "rate": 1.0
+        },
+        "numeric_exact": {
+          "passed": 2,
+          "total": 3,
+          "rate": 0.667
+        },
+        "security_finding": {
+          "passed": 1,
+          "total": 1,
+          "rate": 1.0
+        }
+      },
+      "mean_latency_ms": 14392.05,
+      "numeric_repeat_consistency": 1.0,
+      "numeric_repeat_cases": 1,
+      "interpretation": "descriptive scores on this small fixed dataset; not a general model ranking"
+    }
+  ],
+  "records": [
+    {
+      "model": "granite42-fast:latest",
+      "model_digest": "cbb5553700d6d68be6fb2a5c54a49036dbd811e856cb8b01e8e427ad5ea35a6d",
+      "case_id": "arith-001",
+      "category": "numeric_exact",
+      "repeat": 1,
+      "prompt": "A deterministic transaction adds 1250 cents and then 250 cents to an opening balance of 2000 cents. Return only the final integer balance in cents.",
+      "raw_answer": "Start with opening balance: 2000 cents  \nAdd 1250 cents: 2000 + 1250 = 3250 cents  \nAdd 250 cents: 3250 + 250 = 3500 cents  \n\nFinal integer balance in cents: 3500",
+      "thinking_mode": false,
+      "score": {
+        "metric": "final_numeric_match",
+        "score": true,
+        "expected": "3500",
+        "parsed_numbers": [
+          "2000",
+          "1250",
+          "2000",
+          "1250",
+          "3250",
+          "250",
+          "3250",
+          "250",
+          "3500",
+          "3500"
+        ]
+      },
+      "latency_ms": 11003.39,
+      "total_duration_ns": 11002048400,
+      "prompt_tokens": 47,
+      "generated_tokens": 59
+    },
+    {
+      "model": "granite42-fast:latest",
+      "model_digest": "cbb5553700d6d68be6fb2a5c54a49036dbd811e856cb8b01e8e427ad5ea35a6d",
+      "case_id": "arith-001",
+      "category": "numeric_exact",
+      "repeat": 2,
+      "prompt": "A deterministic transaction adds 1250 cents and then 250 cents to an opening balance of 2000 cents. Return only the final integer balance in cents.",
+      "raw_answer": "Start with opening balance: 2000 cents  \nAdd 1250 cents: 2000 + 1250 = 3250 cents  \nAdd 250 cents: 3250 + 250 = 3500 cents  \n\nFinal integer balance in cents: 3500",
+      "thinking_mode": false,
+      "score": {
+        "metric": "final_numeric_match",
+        "score": true,
+        "expected": "3500",
+        "parsed_numbers": [
+          "2000",
+          "1250",
+          "2000",
+          "1250",
+          "3250",
+          "250",
+          "3250",
+          "250",
+          "3500",
+          "3500"
+        ]
+      },
+      "latency_ms": 10667.33,
+      "total_duration_ns": 10665396600,
+      "prompt_tokens": 47,
+      "generated_tokens": 59
+    },
+    {
+      "model": "granite42-fast:latest",
+      "model_digest": "cbb5553700d6d68be6fb2a5c54a49036dbd811e856cb8b01e8e427ad5ea35a6d",
+      "case_id": "arith-002",
+      "category": "numeric_exact",
+      "repeat": 1,
+      "prompt": "Compute (9800 cents - 2750 cents) + 125 cents. Return only the integer result in cents.",
+      "raw_answer": "Compute step by step:\n\n1. Subtract: 9800 cents - 2750 cents = 7150 cents  \n2. Add: 7150 cents + 125 cents = 7275 cents\n\nReturn only the integer result in cents:\n\n7275",
+      "thinking_mode": false,
+      "score": {
+        "metric": "final_numeric_match",
+        "score": false,
+        "expected": "7175",
+        "parsed_numbers": [
+          "1",
+          "9800",
+          "2750",
+          "7150",
+          "2",
+          "7150",
+          "125",
+          "7275",
+          "7275"
+        ]
+      },
+      "latency_ms": 9657.76,
+      "total_duration_ns": 9656158800,
+      "prompt_tokens": 39,
+      "generated_tokens": 59
+    },
+    {
+      "model": "granite42-fast:latest",
+      "model_digest": "cbb5553700d6d68be6fb2a5c54a49036dbd811e856cb8b01e8e427ad5ea35a6d",
+      "case_id": "review-001",
+      "category": "bug_detection",
+      "repeat": 1,
+      "prompt": "Review this debit guard. Is there a boundary bug? `if amount_cents >= balance_cents: reject()` The transaction should be allowed to leave a zero balance. Answer briefly and identify the operator behavior.",
+      "raw_answer": "Yes, there is a boundary bug.\n\nThe condition `if amount_cents >= balance_cents: reject()` incorrectly rejects transactions that would leave the balance exactly zero. For example, if `balance_cents = 100` and `amount_cents = 100`, the transaction should be allowed (leaving zero balance), but the condition triggers `reject()` because `100 >= 100` is true.\n\n**Operator behavior:** The `>=` operator includes the boundary value (`amount_cents == balance_cents`), causing rejection when zero balance is valid. The correct condition should be `if amount_cents > balance_cents: reject()` to allow transactions that exactly exhaust the balance.\n\n**Brief answer:** Yes, boundary bug; `>=` incorrectly rejects zero-balance transactions. Correct operator should be `>` for rejection.",
+      "thinking_mode": false,
+      "score": {
+        "metric": "predefined_keyword_proxy",
+        "score": true,
+        "matched": [
+          ">=",
+          "zero"
+        ],
+        "required": [
+          ">=",
+          "zero"
+        ],
+        "human_review_required": true
+      },
+      "latency_ms": 22906.52,
+      "total_duration_ns": 22905498700,
+      "prompt_tokens": 57,
+      "generated_tokens": 174
+    },
+    {
+      "model": "granite42-fast:latest",
+      "model_digest": "cbb5553700d6d68be6fb2a5c54a49036dbd811e856cb8b01e8e427ad5ea35a6d",
+      "case_id": "review-002",
+      "category": "security_finding",
+      "repeat": 1,
+      "prompt": "Review this Python line for a concrete security risk: `query = \"SELECT * FROM users WHERE name = '\" + user_input + \"'\"` Name the vulnerability and one direct mitigation.",
+      "raw_answer": "The line:\n\n```python\nquery = \"SELECT * FROM users WHERE name = '\" + user_input + \"'\"\n```\n\ncontains a **SQL injection vulnerability**.\n\n### Vulnerability: SQL Injection\n\n**Why:** The code directly concatenates user-controlled input (`user_input`) into a SQL query string using string interpolation. If `user_input` contains a malicious payload (e.g., `' OR '1'='1`), it can alter the query's logic, potentially allowing unauthorized data access, modification, or bypass of authentication.\n\n**Example:**  \nIf `user_input = \"' OR '1'='1\"`, the resulting query becomes:\n```sql\nSELECT * FROM users WHERE name = '' OR '1'='1'\n```\nwhich always evaluates to true, returning all users.\n\n### Direct mitigation:\n**Use parameterized queries (prepared statements) instead of string concatenation.**\n\nFor example, with `sqlite3` (Python standard library):\n```python\nquery = \"SELECT * FROM users WHERE name = ?\"\ncursor.execute(query, (user_input,))  # Safe: input is treated as data, not SQL",
+      "thinking_mode": false,
+      "score": {
+        "metric": "predefined_keyword_proxy",
+        "score": true,
+        "matched": [
+          "injection",
+          "parameter"
+        ],
+        "required": [
+          "injection",
+          "parameter"
+        ],
+        "human_review_required": true
+      },
+      "latency_ms": 38704.89,
+      "total_duration_ns": 38703531700,
+      "prompt_tokens": 52,
+      "generated_tokens": 256
+    },
+    {
+      "model": "granite42-fast:latest",
+      "model_digest": "cbb5553700d6d68be6fb2a5c54a49036dbd811e856cb8b01e8e427ad5ea35a6d",
+      "case_id": "abstain-001",
+      "category": "abstention",
+      "repeat": 1,
+      "prompt": "Use only this source: `The deployment notes list the service owner and region. They do not specify an availability SLA.` What exact monthly uptime percentage is guaranteed? If the source does not establish it, say so instead of guessing.",
+      "raw_answer": "The source does not establish a specific monthly uptime percentage guarantee. Therefore, the exact monthly uptime percentage guaranteed cannot be determined from the provided source.",
+      "thinking_mode": false,
+      "score": {
+        "metric": "abstention_keyword_proxy",
+        "score": true,
+        "abstained": true,
+        "human_review_required": true
+      },
+      "latency_ms": 4613.05,
+      "total_duration_ns": 4611863000,
+      "prompt_tokens": 62,
+      "generated_tokens": 29
+    },
+    {
+      "model": "granite42-think:latest",
+      "model_digest": "be7f995704aa35d9ca0dcd089e11fe7a216b58c8674fefee344d6ee73448b07c",
+      "case_id": "arith-001",
+      "category": "numeric_exact",
+      "repeat": 1,
+      "prompt": "A deterministic transaction adds 1250 cents and then 250 cents to an opening balance of 2000 cents. Return only the final integer balance in cents.",
+      "raw_answer": "3500",
+      "thinking_mode": "low",
+      "score": {
+        "metric": "final_numeric_match",
+        "score": true,
+        "expected": "3500",
+        "parsed_numbers": [
+          "3500"
+        ]
+      },
+      "latency_ms": 3147.6,
+      "total_duration_ns": 3146004100,
+      "prompt_tokens": 56,
+      "generated_tokens": 19
+    },
+    {
+      "model": "granite42-think:latest",
+      "model_digest": "be7f995704aa35d9ca0dcd089e11fe7a216b58c8674fefee344d6ee73448b07c",
+      "case_id": "arith-001",
+      "category": "numeric_exact",
+      "repeat": 2,
+      "prompt": "A deterministic transaction adds 1250 cents and then 250 cents to an opening balance of 2000 cents. Return only the final integer balance in cents.",
+      "raw_answer": "3500",
+      "thinking_mode": "low",
+      "score": {
+        "metric": "final_numeric_match",
+        "score": true,
+        "expected": "3500",
+        "parsed_numbers": [
+          "3500"
+        ]
+      },
+      "latency_ms": 3000.74,
+      "total_duration_ns": 2999085500,
+      "prompt_tokens": 56,
+      "generated_tokens": 19
+    },
+    {
+      "model": "granite42-think:latest",
+      "model_digest": "be7f995704aa35d9ca0dcd089e11fe7a216b58c8674fefee344d6ee73448b07c",
+      "case_id": "arith-002",
+      "category": "numeric_exact",
+      "repeat": 1,
+      "prompt": "Compute (9800 cents - 2750 cents) + 125 cents. Return only the integer result in cents.",
+      "raw_answer": "10675",
+      "thinking_mode": "low",
+      "score": {
+        "metric": "final_numeric_match",
+        "score": false,
+        "expected": "7175",
+        "parsed_numbers": [
+          "10675"
+        ]
+      },
+      "latency_ms": 3991.72,
+      "total_duration_ns": 3989554400,
+      "prompt_tokens": 48,
+      "generated_tokens": 23
+    },
+    {
+      "model": "granite42-think:latest",
+      "model_digest": "be7f995704aa35d9ca0dcd089e11fe7a216b58c8674fefee344d6ee73448b07c",
+      "case_id": "review-001",
+      "category": "bug_detection",
+      "repeat": 1,
+      "prompt": "Review this debit guard. Is there a boundary bug? `if amount_cents >= balance_cents: reject()` The transaction should be allowed to leave a zero balance. Answer briefly and identify the operator behavior.",
+      "raw_answer": "Yes, there is a **boundary bug**.  \n\nThe condition `if amount_cents >= balance_cents: reject()` incorrectly rejects transactions that would leave the balance exactly zero (i.e., `amount_cents == balance_cents`). The transaction should be allowed when `amount_cents == balance_cents` (leaving zero balance), but the `>=` operator rejects this boundary case.  \n\n**Operator behavior**: `>=` is inclusive (rejects when `amount_cents` equals `balance_cents`), causing the off-by-one/boundary error. The fix should use `> balance_cents` to reject only when the amount exceeds the balance.",
+      "thinking_mode": "low",
+      "score": {
+        "metric": "predefined_keyword_proxy",
+        "score": true,
+        "matched": [
+          ">=",
+          "zero"
+        ],
+        "required": [
+          ">=",
+          "zero"
+        ],
+        "human_review_required": true
+      },
+      "latency_ms": 34903.67,
+      "total_duration_ns": 34902520600,
+      "prompt_tokens": 66,
+      "generated_tokens": 205
+    },
+    {
+      "model": "granite42-think:latest",
+      "model_digest": "be7f995704aa35d9ca0dcd089e11fe7a216b58c8674fefee344d6ee73448b07c",
+      "case_id": "review-002",
+      "category": "security_finding",
+      "repeat": 1,
+      "prompt": "Review this Python line for a concrete security risk: `query = \"SELECT * FROM users WHERE name = '\" + user_input + \"'\"` Name the vulnerability and one direct mitigation.",
+      "raw_answer": "Vulnerability: SQL injection (via string concatenation of untrusted input into an SQL query).\n\nDirect mitigation: Use a parameterized query (prepared statement) instead of concatenating `user_input` into the query string. For example, with `sqlite3`:\n\n```python\nquery = \"SELECT * FROM users WHERE name = ?\"\ncursor.execute(query, (user_input,))\n```\n\nOr with `psycopg2` (PostgreSQL):\n\n```python\nquery = \"SELECT * FROM users WHERE name = %s\"\ncursor.execute(query, (user_input,))\n```\n\nParameterized queries ensure the database treats `user_input` as a data value, not executable SQL, thereby preventing injection.",
+      "thinking_mode": "low",
+      "score": {
+        "metric": "predefined_keyword_proxy",
+        "score": true,
+        "matched": [
+          "injection",
+          "parameter"
+        ],
+        "required": [
+          "injection",
+          "parameter"
+        ],
+        "human_review_required": true
+      },
+      "latency_ms": 29467.72,
+      "total_duration_ns": 29466321300,
+      "prompt_tokens": 61,
+      "generated_tokens": 167
+    },
+    {
+      "model": "granite42-think:latest",
+      "model_digest": "be7f995704aa35d9ca0dcd089e11fe7a216b58c8674fefee344d6ee73448b07c",
+      "case_id": "abstain-001",
+      "category": "abstention",
+      "repeat": 1,
+      "prompt": "Use only this source: `The deployment notes list the service owner and region. They do not specify an availability SLA.` What exact monthly uptime percentage is guaranteed? If the source does not establish it, say so instead of guessing.",
+      "raw_answer": "The source does not specify or guarantee an exact monthly uptime percentage. It only states that \"The deployment notes list the service owner and region. They do not specify an availability SLA.\" Therefore, no exact monthly uptime percentage is guaranteed or provided by the source.",
+      "thinking_mode": "low",
+      "score": {
+        "metric": "abstention_keyword_proxy",
+        "score": true,
+        "abstained": true,
+        "human_review_required": true
+      },
+      "latency_ms": 11840.85,
+      "total_duration_ns": 11839558000,
+      "prompt_tokens": 71,
+      "generated_tokens": 64
+    }
+  ],
+  "limitations": [
+    "small synthetic dataset; scores are not general capability estimates",
+    "keyword rubric is a proxy; human review is required",
+    "local inference was through Ollama; tags and quantization are host-specific",
+    "no model is authorized to decide or post transactions",
+    "a rubric correction was applied after the original inference; responses were not regenerated"
+  ],
+  "rescoring": {
+    "timestamp_utc": "2026-11-17T13:05:38.130522+00:00",
+    "new_inference_run": false,
+    "reason": "reviewed retained abstention wording, expanded its keyword proxy, corrected the boundary-bug rubric, and calculated repeat agreement from repeated outputs; no new inference"
+  }
+}

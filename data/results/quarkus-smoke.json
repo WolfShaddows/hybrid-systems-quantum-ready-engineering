@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "quarkus-rest-smoke",
+  "status": "passed",
+  "transactions": [
+    {
+      "status": "POSTED",
+      "account_id": "quarkus-test",
+      "idempotency_key": "q-credit",
+      "operation": "CREDIT",
+      "amount_cents": 980,
+      "balance_cents": 980,
+      "replayed": false
+    },
+    {
+      "status": "POSTED",
+      "account_id": "quarkus-test",
+      "idempotency_key": "q-debit",
+      "operation": "DEBIT",
+      "amount_cents": 980,
+      "balance_cents": 0,
+      "replayed": false
+    }
+  ],
+  "decision_adapter": "native-ffi",
+  "assertions": [
+    "REST health responded",
+    "Quarkus called the Rust C ABI through JNA",
+    "Rust invoked the COBOL decision engine",
+    "full-balance debit was accepted",
+    "two journal records were persisted"
+  ]
+}
