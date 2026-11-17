@@ -36,4 +36,4 @@ The local GnuCOBOL 2.0 runtime failed `OPEN EXTEND` with status 30 in an environ
 
 ## Navigate
 
-[Architecture](docs/ARCHITECTURE.md) · [Decisions](docs/DECISIONS.md) · [Strategy](docs/TECHNICAL-STRATEGY.md) · [Advocacy](docs/ADVOCACY-PORTFOLIO.md) · [Research plan](research/PLAN.md) · [Evidence](data/results/README.md) · [Primary sources](references/SOURCES.md)
+[Architecture](docs/ARCHITECTURE.md) · [Decisions](docs/DECISIONS.md) · [Strategy](docs/TECHNICAL-STRATEGY.md) · [Research plan](research/PLAN.md) · [Evidence](data/results/README.md) · [Primary sources](references/SOURCES.md)
